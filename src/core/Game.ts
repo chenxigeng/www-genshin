@@ -79,7 +79,7 @@ class StatePreload extends StateHandler<Game> {
     public name: string = "StatePreload";
 
     public onEnter() {
-        const resources = this.target.viewer.user.resources;
+        const { resources } = this.target.viewer.user as User;
         return Promise.all([
             gameManager.task(AssetManager.Load({ url: "Genshin/Login/DOOR.glb" }).then((v) => resources.DOOR = v), { name: "DOOR" }),
             gameManager.task(AssetManager.Load({ url: "Genshin/Login/SM_BigCloud.glb" }).then((v) => resources.SM_BigCloud = v), { name: "SM_BigCloud" }),

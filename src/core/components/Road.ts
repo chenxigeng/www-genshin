@@ -1,5 +1,6 @@
 
 import { gameManager } from "../../core/GameManager";
+import type { User } from "../User";
 import { AnimationMixer, Color, Component, LoopOnce, Mesh, Object3D, TWEEN, Vector3 } from "../../libs/xviewer";
 import { cameraCenter } from "./ForwardCamera";
 import { toonMaterials } from "./Materials";
@@ -19,7 +20,8 @@ export class Road extends Component {
     private mixerList: AnimationMixer[] = [];
 
     onLoad(): void {
-        const v = this.viewer.user.resources.SM_Road
+        const { resources } = this.viewer.user as User;
+        const v = resources.SM_Road
         this.viewer.scene.add(v)
         v.traverse((mesh: any) => {
             mesh.receiveShadow = true

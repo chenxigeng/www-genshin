@@ -1,1 +1,1 @@
-export * from './xviewer.module.min';
+export * from '../../../xviewer2/src/index.ts';
