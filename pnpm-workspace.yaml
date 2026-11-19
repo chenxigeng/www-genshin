@@ -1,0 +1,7 @@
+packages:
+  - apps/*
+  - packages/*
+
+# esbuild 的安装脚本负责校验平台二进制；pnpm 默认拦截依赖的构建脚本，这里显式放行。
+allowBuilds:
+  esbuild: true

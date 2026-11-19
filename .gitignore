@@ -12,6 +12,13 @@ dist
 dist-ssr
 *.local
 
+# pnpm
+.pnpm-store
+
+# TypeScript
+*.tsbuildinfo
+tsconfig.tsbuildinfo
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

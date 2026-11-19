@@ -11,13 +11,36 @@
 
 由于网站访问量比较大，免费的托管服务都不让用，我自己的服务器也因为被攻击暂时没有对外了，如果有云服务商愿意赞助将不胜感激。我们也会制作更多有趣的项目开源给大家。
 
-启动代码
+## 目录结构
 
-```js
-npm i
-npm start
+本仓库使用 pnpm workspace 管理，渲染库与应用分开，方便库单独发布。
+
 ```
-如果npm比较慢，可使用cnpm
+www-genshin
+├─ apps/www-genshin  《原神启动》应用（Vite + React）
+└─ packages/xviewer  @xviewer2/xviewer 渲染库，产物可独立发布到 npm
+```
+
+## 启动代码
+
+```sh
+pnpm install
+pnpm dev
+```
+
+`pnpm dev` 会先构建渲染库，再并行启动 `tsdown --watch` 与 Vite 开发服务器（默认 http://127.0.0.1:5175）。只需跑应用时用 `pnpm start`。
+
+常用命令：
+
+```sh
+pnpm build       # 按依赖顺序构建库与应用
+pnpm typecheck   # 全部包类型检查
+pnpm test        # 全部包测试
+pnpm build:lib   # 只构建 @xviewer2/xviewer
+pnpm publish:lib # 发布 @xviewer2/xviewer（需先登录 npm）
+```
+
+库的导出盘点、类型对照与浏览器对照脚本见 [packages/xviewer/README.md](packages/xviewer/README.md)。
 
 ## xviewer.js是什么
 xviewer.js是一个基于three.js的插件式渲染框架，它对three.js做了一层简洁优雅的封装，包含了大量实用的组件和插件，目标是让前端开发者能更简单地应用webgl技术。xviewer.js也会在近期开源，我们也在制作更多有趣的演示案例，欢迎大家关注我的b站账号。[【three.js实现水墨杭州迎亚运】](https://www.bilibili.com/video/BV1yG411Z7sw/?share_source=copy_web&vd_source=a8feede4d26d2a3cfa4e68803fdd2c94)也是基于xviewer.js开发的。

@@ -1,0 +1,62 @@
+{
+  "name": "@xviewer2/xviewer",
+  "version": "0.1.0",
+  "description": "基于 three.js r150 的插件式渲染框架 xviewer 的 TypeScript 实现",
+  "type": "module",
+  "license": "MIT",
+  "keywords": [
+    "three",
+    "three.js",
+    "webgl",
+    "xviewer",
+    "renderer",
+    "component"
+  ],
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./types.d.ts",
+  "exports": {
+    ".": {
+      "types": "./types.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "shims",
+    "types.d.ts",
+    "README.md",
+    "LICENSE"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsdown",
+    "dev": "tsdown --watch",
+    "prepack": "tsdown",
+    "typecheck": "tsc -p tsconfig.json",
+    "test": "node --test",
+    "check:app-types": "node scripts/check-app-types.ts",
+    "check:browser": "node scripts/check-browser.ts",
+    "inventory": "node scripts/inventory.ts"
+  },
+  "peerDependencies": {
+    "three": "0.150.1"
+  },
+  "dependencies": {
+    "@tweenjs/tween.js": "18.6.4",
+    "@types/three": "0.150.2",
+    "n8ao": "1.6.8",
+    "postprocessing": "6.30.2"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "esbuild": "^0.18.20",
+    "three": "0.150.1",
+    "tsdown": "^0.23.7",
+    "typescript": "^5.8.0"
+  }
+}
